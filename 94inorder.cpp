@@ -27,3 +27,30 @@ public:
         traverse(root ->right, output);
     }
 };
+
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> output;
+        stack<TreeNode*> s;
+        TreeNode* curr = root;
+        
+        while(curr != NULL || !s.empty()){
+            
+            while(curr != NULL){
+                s.push(curr);
+                curr = curr -> left;
+            }
+            curr = s.top() ;
+            s.pop();
+            output.push_back(curr -> val);
+            curr = curr -> right;
+            
+        }
+        
+        
+        return output;
+    }
+    
+    
+};
